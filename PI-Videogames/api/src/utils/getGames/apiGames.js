@@ -1,5 +1,6 @@
 const axios = require('axios');
-const {API_KEY} = process.env;
+require('dotenv').config()
+const { API_KEY } = process.env;
 
 
 
@@ -8,7 +9,7 @@ const infoApi = async () => {
     const games = []
     try{
         
-        const response = await axios(`https://api.rawg.io/api/games?key=e3815659c22e4b46a3a8372896f333e4`)
+        const response = await axios(`https://api.rawg.io/api/games?key=${API_KEY}`)
         response?.data.results.map((game) => {
             games.push({
                 id: game.id,
