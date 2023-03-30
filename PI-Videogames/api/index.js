@@ -7,9 +7,9 @@ const PORT = 3001;
 conn.sync({ force: true }).then(() => {
   console.log('Database connected... ')
   server.listen(3001, () => {
-    console.log(`listening at PORT: ${PORT}.`); // eslint-disable-line no-console
+    console.log(`listening at PORT: ${PORT}.`); //  
   });
-});
+}).catch( err => console.log(err));
 
 //                       _oo0oo_
 //                      o8888888o
