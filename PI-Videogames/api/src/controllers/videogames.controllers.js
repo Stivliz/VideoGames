@@ -65,7 +65,7 @@ const getIdVideogame = async (req, res) => {
                 include: [
                     {
                         model: Genre,
-                        attributes: ['name'],
+                        attributes: ['name'], ///llamamos attributes a cada una de las columnas en las tablas de la DB.
                         through: {
                             attributes: []
                         }
@@ -139,7 +139,7 @@ Después de encontrar los géneros correspondientes en la base de datos, se real
 En resumen, el código guarda un nuevo registro de un videojuego en la base de datos y establece una relación de muchos a muchos con los géneros que se recibieron en el body.
 */
 
-const updateGame = async (req, res) => {
+const modifyGame = async (req, res) => {
     
 
 }
@@ -147,7 +147,8 @@ const updateGame = async (req, res) => {
 module.exports = {
     getVideogame,
     getIdVideogame,
-    saveVideogameDb
+    saveVideogameDb,
+    modifyGame
 }
 
 
