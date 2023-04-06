@@ -1,10 +1,12 @@
-import {GET_VIDEOGAMES, CLEAN_VIDEOGAMES, GET_VIDEOGAME_ID, CLEAN_VIDEOGAME_ID, GET_GENRES} from "./Actions-Types";
+import {GET_VIDEOGAMES, CLEAN_VIDEOGAMES, GET_VIDEOGAME_ID,
+        CLEAN_VIDEOGAME_ID, GET_GENRES, API_OR_DB, ALPHABETICAL_ORDER} from "./Actions-Types";
 
 
 const initialState = {
     allVideogames: [],
     videogame: {},
     genres: [],
+    gamesCopy: []
 }
 
 
@@ -15,7 +17,8 @@ const reducer = (state = initialState, action) => {
         case GET_VIDEOGAMES:
             return{
                 ...state,
-                allVideogames: action.payload
+                allVideogames: action.payload,
+                gamesCopy: action.payload
             }
 
         case CLEAN_VIDEOGAMES:
@@ -41,6 +44,41 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 genres: action.payload
             }
+        
+        case API_OR_DB:
+            //Games almacena todo lo que tiene la gamesCopy, que en si es la copia de todos los videogames(allVideogames).
+            const games = state.gamesCopy
+            //Creamos una constante storesGames que comparara al action.payload, que en si es la opcion que clickee el usuario, (Son 3
+            //opciones, allVideogames, API Y DB), dado que sea DB, por payload vendra DB entonces filtrara los videojuegos
+            //de la base de datos, dado que no sea DB filtrara los de la Api. 
+            const storedGames = action.payload === "DB" ? games.filter((e) => e.dbCreated) : games.filter((e) => !e.dbCreated)
+            //Retornaremos una copia del estado para no pisar aquellos datos que no utilicemos con cambios nuevos
+            //y tomamos a la propiedad videogames, que se encargara de almacenar en este caso otro ternario, en donde
+            //si el action.payload que viene es igual a la opcion de AllVideogames, entonces devolveremos todos 
+            //todos los vidojuegos tanto de API y DB, si el action.payload no es igual a "allVideogames", entonces
+            //almacenara los juegos ya sea de la DB o API dependiendo el caso que se alojo en la constante storedGames
+            return{
+                ...state,
+                allVideogames: action.payload === "allVideogames" ? games : storedGames 
+            }
+
+        case ALPHABETICAL_ORDER:
+            //Ordenamos los videogames alfabeticamente
+            const alphabeticSort = (action.payload === 'A-Z') 
+            ? state.gamesCopy.sort((a,b) => {
+                if(a.name.toUpperCase() > b.name.toUpperCase()) return 1
+                if(a.name.toUpperCase() < b.name.toUpperCase()) return -1
+                return 0
+            })
+            : state.gamesCopy.sort((a,b) => {
+                if(a.name.toUpperCase() > b.name.toUpperCase()) return -1
+                if(a.name.toUpperCase() < b.name.toUpperCase()) return 1
+                return 0
+            })
+        return {
+          ...state,
+          allVideogames: (action.payload !==  'Z-A') ? state.gamesCopy : alphabeticSort
+        };
         
         default:
             return state;

@@ -1,5 +1,6 @@
 import axios from 'axios'
-import {GET_VIDEOGAMES, CLEAN_VIDEOGAMES, GET_VIDEOGAME_ID, CLEAN_VIDEOGAME_ID, GET_GENRES, ERROR } from "./Actions-Types.js";
+import {GET_VIDEOGAMES, CLEAN_VIDEOGAMES, GET_VIDEOGAME_ID, 
+        CLEAN_VIDEOGAME_ID, GET_GENRES, API_OR_DB, ALPHABETICAL_ORDER, ERROR } from "./Actions-Types.js";
 
 
 
@@ -74,3 +75,22 @@ export const getGenres = () => {
     
 }
 
+
+//---------------------------------//-----------//---------------------------------//
+
+export const apiOrDb = (game) => {
+    return {
+        type: API_OR_DB,
+        payload: game
+    }
+}
+
+
+//---------------------------------//-----------//---------------------------------//
+
+export const alphabeticalOrder = (order) => {
+    return {
+        type: ALPHABETICAL_ORDER,
+        payload: order
+    }
+}

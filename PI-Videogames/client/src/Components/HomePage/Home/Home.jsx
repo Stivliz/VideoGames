@@ -14,6 +14,7 @@ const Home = () => {
 
     const dispatch = useDispatch();
     const  allVideogames  = useSelector((state) => state.allVideogames);
+    const [order, setOrder] = useState('')
     const [currentPage, setCurrentPage] = useState(1);
     const [gamePerPage, setGamePerPage] = useState(15);
     const [loading, setLoading] = useState(true);
@@ -72,7 +73,7 @@ const Home = () => {
           
             
             <div className={style.navHome}>
-                <Nav />
+                <Nav setCurrentPage={setCurrentPage} setOrder={setOrder}/>
             </div>
             
             <div className={style.cardsContainer}>
