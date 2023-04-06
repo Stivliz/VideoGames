@@ -4,8 +4,8 @@ const PORT = 3001;
 
 
 // Syncing all the models at once.
-conn.sync({ force: true }).then(() => {
-  console.log('Database connected... ')
+conn.sync({ force: false, alter: true }).then(() => { //force: true --> Mientras hago cambios y pruebas.
+  console.log('Database connected... ') // alter: true --> Cuando ya he terminado de realizar lo anterior
   server.listen(3001, () => {
     console.log(`listening at PORT: ${PORT}.`); //  
   });

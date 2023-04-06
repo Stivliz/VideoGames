@@ -1,0 +1,23 @@
+/* .container {
+    position: relative;
+  } */
+  
+  /* .titleContainer {
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+   */
+  .cardsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    min-height: 250px;
+    margin-top: 4rem;
+    
+  }
+
+  .navHome{
+    min-width: 100%;
+  }

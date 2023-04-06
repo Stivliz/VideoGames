@@ -8,8 +8,10 @@ const infoApi = async () => {
 
     const games = []
     try{
-        
-        const response = await axios(`https://api.rawg.io/api/games?key=${API_KEY}`)
+        //Creo un for, para traerme la informacion de las primeras 5 paginas.
+        for(let i = 1; i <= 5; i++){
+        let count =  1;
+        const response = await axios(`https://api.rawg.io/api/games?key=${API_KEY}&page=${i}`)
         response?.data.results.map((game) => {
             games.push({
                 id: game.id,
@@ -22,7 +24,9 @@ const infoApi = async () => {
                 genres: game.genres.map((e) => e.name).join(' | '),
                 })
             })
-        
+            count++
+        }
+
         return games;
 
     }catch(error){

@@ -45,7 +45,7 @@ const getIdVideogame = async (req, res) => {
             const idVideogame = {
                 name: gameApi.name,
                 background_image: gameApi.background_image,
-                description: gameApi.description,
+                description: gameApi.description_raw,
                 genres: gameApi.genres?.map((e) => e.name),
                 platforms: gameApi.platforms?.map((e) => e.platform.name).join(' | '),
                 released: gameApi.released,
