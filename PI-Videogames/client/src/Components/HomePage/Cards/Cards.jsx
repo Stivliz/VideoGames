@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 // import React, { useState } from "react";
 import style from "./Cards.module.css";
 
-const Cards = ({ id, img, name, genres }) => {
+const Cards = ({ id, img, name, genres, rating }) => {
 
 
   
@@ -14,7 +14,9 @@ const Cards = ({ id, img, name, genres }) => {
           </div>
           <div className={style.cardContent}>
             <h2 className={style.cardTitle}>{name}</h2>
+            <p className={style.cardRating}>{rating}</p>
             <p className={style.cardGenres}>{genres}</p>
+            
           </div>
       </Link>
     </div>

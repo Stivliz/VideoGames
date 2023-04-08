@@ -1,10 +1,53 @@
-.containerNav{
+/* .containerNav{
     display:flex;
     width: 100%;
     position: fixed;
     background-color: rgb(5, 110, 110);
     z-index: 999;
     top: 0;
+
+
+} */
+
+.containerNav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    padding: 4px 9px;
+    background-color: rgb(5, 110, 110);
+    z-index: 999;
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+  
+
+  .image {
+    border-radius: 1rem;
+    width: 90px;
+    height: 40px;
+    border-color: lawngreen;
     
 }
-
+  .containerNav select {
+    margin: 5px;
+    padding: 1px;
+    font-size: 14px;
+    border-radius: 4px;
+    border: none;
+    background-color: #05d6dd;
+    color: #036172;
+    cursor: pointer;
+  }
+  
+  .containerNav select:focus {
+    outline: none;
+  }
+  
+  .containerNav select option {
+    color: #333;
+  }
+  .select2{
+    color: white;
+  }

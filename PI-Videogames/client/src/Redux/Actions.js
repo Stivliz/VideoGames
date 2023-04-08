@@ -1,6 +1,7 @@
 import axios from 'axios'
 import {GET_VIDEOGAMES, CLEAN_VIDEOGAMES, GET_VIDEOGAME_ID, 
-        CLEAN_VIDEOGAME_ID, GET_GENRES, API_OR_DB, ALPHABETICAL_ORDER, ERROR } from "./Actions-Types.js";
+        CLEAN_VIDEOGAME_ID, GET_GENRES, API_OR_DB, 
+        ALPHABETICAL_ORDER, ORDER_BY_RATING, FILTER_BY_GENRE, FILTER_BY_NAME, ERROR } from "./Actions-Types.js";
 
 
 
@@ -92,5 +93,48 @@ export const alphabeticalOrder = (order) => {
     return {
         type: ALPHABETICAL_ORDER,
         payload: order
+    }
+}
+
+
+//---------------------------------//-----------//---------------------------------//
+
+
+export const orderByRating = (rating) => {
+    return {
+        type: ORDER_BY_RATING,
+        payload: rating
+    }
+}
+
+
+//---------------------------------//-----------//---------------------------------//
+
+
+export const filterByGenre = (genre) => {
+    return {
+      type: FILTER_BY_GENRE,
+      payload: genre
+    }
+  }
+
+
+//---------------------------------//-----------//---------------------------------//
+
+
+export const filterBYName = (name) => {
+    return async (dispatch) => {
+        try {
+            let response = await axios(`/videogames?name=${name}`)
+            dispatch({
+                type: FILTER_BY_NAME,
+                payload: response.data
+            })
+        } catch (error) {
+            dispatch({
+                type: ERROR,
+                payload: error
+            })
+        }
     }
 }

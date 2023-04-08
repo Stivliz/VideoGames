@@ -14,10 +14,13 @@ const Home = () => {
 
     const dispatch = useDispatch();
     const  allVideogames  = useSelector((state) => state.allVideogames);
-    const [order, setOrder] = useState('')
+    
+   
     const [currentPage, setCurrentPage] = useState(1);
-    const [gamePerPage, setGamePerPage] = useState(15);
+    const [gamePerPage] = useState(15);
     const [loading, setLoading] = useState(true);
+    const [order, setOrder] = useState('')
+    console.log('order:', order)
 
     const lastIndex = currentPage * gamePerPage; // 1 * 15 = 15 -> Ultimo indice. 
     const firstIndex = lastIndex - gamePerPage // 15 - 15 = 0 --> Primer indice.
@@ -42,7 +45,7 @@ const Home = () => {
     const onNextPage = () => {
         const next = currentPage + 1
         setCurrentPage(next)
-        if(!( videogames.length ) ){
+        if(!(videogames.length ) ){
             setCurrentPage(1)
         }
         
@@ -51,7 +54,6 @@ const Home = () => {
 
 
     useEffect(() => {
-
         dispatch(getVideogames())
         .then(() => setLoading(false))  
         return () => dispatch(cleanVideogames())

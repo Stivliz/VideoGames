@@ -42,6 +42,8 @@
     overflow: hidden;
     background-color:teal;
     transition: transform 0.2s ease-in-out;
+    text-decoration: none;
+  
   }
   
   .card:hover {
@@ -53,6 +55,7 @@
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
+    text-decoration: none;
   }
   
   .cardImg {
@@ -60,27 +63,40 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    text-decoration: none;
   }
   
   .cardImg img {
     height: 100%;
     width: 100%;
     object-fit: cover;
+    text-decoration: none;
   }
   
   .cardContent {
     padding: 1rem;
+    text-decoration: none;
   }
   
   .cardTitle {
     margin-bottom: 0.5rem;
     font-size: 1.2rem;
     font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color:rgb(10, 53, 53)
   }
-  
+  .cardRating{
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: lighter;
+    color: #000000;
+    text-align: center;
+  }
   .cardGenres {
     margin-top: 0.5rem;
     font-size: 0.9rem;
     font-weight: lighter;
     color: #000000;
+    text-align: center;
   }
