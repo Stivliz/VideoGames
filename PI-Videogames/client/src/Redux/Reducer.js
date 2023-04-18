@@ -126,17 +126,23 @@ const reducer = (state = initialState, action) => {
                 allVideogames: genresFiltered
             };                       
 
+
+
         case FILTER_BY_NAME:
             return{
                 ...state,
                 allVideogames: action.payload
             }
+
+
         
         case VIDEOGAME_POST: 
         return {
           ...state,
             videogame_post: action.payload
         }
+        
+
         
         default:
             return {
