@@ -7,14 +7,11 @@ import Nav from "../Nav/Nav";
 import Paginated from "../Paginated/Paginated";
 import Loader from "../../Loader/Loader";
 
-
-
-
 const Home = () => {
 
     const dispatch = useDispatch();
     const  allVideogames  = useSelector((state) => state.allVideogames);
-    
+    console.log( 'juegos:' , allVideogames)
    
     const [currentPage, setCurrentPage] = useState(1);
     const [gamePerPage] = useState(15);
@@ -50,8 +47,6 @@ const Home = () => {
         }
         
     }
-
-
 
     useEffect(() => {
         dispatch(getVideogames())
@@ -98,6 +93,9 @@ const Home = () => {
 
             </div>
             <div>
+
+
+            {
                 <Paginated 
                     videogames={allVideogames} 
                     currentPage={currentPage} //Pagin actual = 1
@@ -106,6 +104,7 @@ const Home = () => {
                     onNextPage={onNextPage}
                     onSpecificPage={onSpecificPage}
                 />
+            }
             </div>
             
             

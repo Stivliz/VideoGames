@@ -13,7 +13,7 @@ const LandingPage = () => {
         <div className={styles["landing-container"]}>
         <h1 className={`${styles["landing-title"]} ${styles["landing-text"]}`}>
           WELCOME TO VIDEO GAMES
-        </h1> <br/> 
+        </h1> <br/> <br/> <br/> 
         <button className={styles["landing-button"]} onClick={handlerButton}>
           Play Again
         </button>

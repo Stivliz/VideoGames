@@ -20,9 +20,9 @@ const SearchBar = () => {
 
     return(
         <>
-      <form className={styles.searchForm} onSubmit={handlerSubmit}>
+        <form className={styles.searchForm}>
             <input className={styles.searchInput} type="search" placeholder='Search...' onChange={hanlderSearchByName}/>
-            <button className={styles.searchButton} type="submit">Search</button>
+            <button className={styles.searchButton} type="submit" onClick={handlerSubmit}>Search</button>
         </form>
 
             {/* <input  type="search" placeholder='Search...' onChange={hanlderSearchByName}/>

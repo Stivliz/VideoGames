@@ -15,7 +15,12 @@ const Cards = ({ id, img, name, genres, rating }) => {
           <div className={style.cardContent}>
             <h2 className={style.cardTitle}>{name}</h2>
             <p className={style.cardRating}>{rating}</p>
-            <p className={style.cardGenres}>{genres}</p>
+            <p className={style.cardGenres}>{
+              typeof genres === 'string'
+              ? genres
+              :(genres?.map(g => g.name).join( ' | '))
+            }
+            </p>
             
           </div>
       </Link>

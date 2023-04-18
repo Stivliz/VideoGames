@@ -11,6 +11,7 @@ const getVideogame = async (req, res) => {
     const { name } = req.query;
     const allGames = await getAllGames()
     
+    
         if(name){
             const gameName = allGames.filter((game) => {
                 return game.name.toLowerCase().includes(name.toLowerCase()); // convierte ambas cadenas a minúsculas antes de compararlas, 
@@ -21,7 +22,7 @@ const getVideogame = async (req, res) => {
 
             gameName.length 
             ? res.status(200).json(gameName)
-            : res.status(404).send('video game not found 🚫')
+            : res.status(404).send('videogame not found 🚫')
         }else{
             res.status(200).json(allGames)
         }
@@ -47,7 +48,7 @@ const getIdVideogame = async (req, res) => {
                 background_image: gameApi.background_image,
                 description: gameApi.description_raw,
                 genres: gameApi.genres?.map((e) => e.name),
-                platforms: gameApi.platforms?.map((e) => e.platform.name).join(' | '),
+                platforms: gameApi.platforms?.map((e) => e.platform.name).join(' | ').toString(),
                 released: gameApi.released,
                 rating: gameApi.rating,   
             }
@@ -98,7 +99,7 @@ const saveVideogameDb = async (req, res) => {
         
         // Si todos o alguno de los datos obligatorios, esta/n ausentes entonces enviamos una response con un 
         // mensaje indicando que falta informacion obligatoria.
-        if(![name, description, released].every(Boolean)){
+        if(!name || !description || !released){
             res.status(404).send('Absence of mandatory data..')
         }
         // Si los datos obligatorios estan completos, entonces guardamos esa info en la Db.
@@ -112,6 +113,7 @@ const saveVideogameDb = async (req, res) => {
             rating
          })
 
+        console.log('saveDb:', saveDb) 
         //Buscamos en el modelo Genre, aquel genero/s, que coincida con el llegado por query, utilizando el 
         //where, para uscar en la columna name de el modelo Genre, algun genres que sea igual al llegado por query
         const findGenreDb = await Genre.findAll({
@@ -139,16 +141,11 @@ Después de encontrar los géneros correspondientes en la base de datos, se real
 En resumen, el código guarda un nuevo registro de un videojuego en la base de datos y establece una relación de muchos a muchos con los géneros que se recibieron en el body.
 */
 
-const modifyGame = async (req, res) => {
-    
-
-}
-
 module.exports = {
     getVideogame,
     getIdVideogame,
     saveVideogameDb,
-    modifyGame
+  
 }
 
 

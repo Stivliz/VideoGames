@@ -1,13 +1,14 @@
 import {GET_VIDEOGAMES, CLEAN_VIDEOGAMES, GET_VIDEOGAME_ID,
         CLEAN_VIDEOGAME_ID, GET_GENRES, API_OR_DB, 
-        ALPHABETICAL_ORDER, ORDER_BY_RATING, FILTER_BY_GENRE, FILTER_BY_NAME} from "./Actions-Types";
+        ALPHABETICAL_ORDER, ORDER_BY_RATING, FILTER_BY_GENRE, FILTER_BY_NAME, VIDEOGAME_POST} from "./Actions-Types";
 
 
 const initialState = {
     allVideogames: [],
     videogame: {},
     genres: [],
-    gamesCopy: []
+    gamesCopy: [],
+    videogame_post: {}
 }
 
 
@@ -130,7 +131,12 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 allVideogames: action.payload
             }
-    
+        
+        case VIDEOGAME_POST: 
+        return {
+          ...state,
+            videogame_post: action.payload
+        }
         
         default:
             return {

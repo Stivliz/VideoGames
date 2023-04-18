@@ -1,4 +1,5 @@
-.card-container {
+
+  .card-container {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -10,21 +11,27 @@
   
   .image-container {
     margin-right: 2rem;
+    flex-basis: 40%;
   }
   
   .image-container img {
     max-width: 100%;
-    height: 20%;
+    height: 100%;
+    object-fit: cover;
   }
   
   .properties-container {
     display: flex;
     flex-direction: column;
     text-align: center;
+    flex-basis: 60%;
   }
   
-  .properties-container p {
-    margin-bottom: 1rem;
+  .properties-container h2,
+  .properties-container p,
+  .properties-container div,
+  .properties-container button {
+    width: 100%;
   }
   
   .back-button {
@@ -38,3 +45,4 @@
     font-weight: bold;
     margin-top: 1rem;
   }
+  

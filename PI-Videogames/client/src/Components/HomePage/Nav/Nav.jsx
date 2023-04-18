@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import { getVideogames, getGenres, apiOrDb, alphabeticalOrder, orderByRating, filterByGenre} from '../../../Redux/Actions';
 import AllGenres from './AllGenres';
@@ -42,7 +43,7 @@ const Nav = ({setCurrentPage, setOrder}) => {
         setCurrentPage(1)
     }
 
-    const hanlderFilterGenres = (event) => {
+    const handlerFilterGenres = (event) => {
         event.preventDefault()
         dispatch(filterByGenre(event.target.value));
         setOrder(event.target.value)
@@ -82,15 +83,22 @@ const Nav = ({setCurrentPage, setOrder}) => {
             </div>
 
             <div className={styles.selectContainer}>
-                <select className={styles.select} name='Genres' onChange={hanlderFilterGenres}>
+                <select className={styles.select} name='Genres' onChange={handlerFilterGenres}>
                 <option value='Genres'> ALL VIDEOGAME GENRES </option>
                 <AllGenres genres={genres} />
                 </select>
             </div>
 
+            <div>
+                <button>
+                    <Link to='/videogames/form'>CREATE</Link>
+                </button>
+            </div>
+
             <div className={styles.searchBarContainer}>
                 <SearchBar />
             </div>
+
         </div>
 
 

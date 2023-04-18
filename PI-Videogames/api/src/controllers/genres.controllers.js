@@ -8,7 +8,7 @@ const getGenres = async (req, res) => {
         if(!genresDb){
             res.status(404).send('genres not found 🚫')
         }
-
+      
         res.status(200).json(genresDb)
 
     } catch (error) {

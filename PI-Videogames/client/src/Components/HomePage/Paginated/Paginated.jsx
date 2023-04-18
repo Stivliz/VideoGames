@@ -9,6 +9,8 @@ const Paginated = ({ videogames, currentPage, gamePerPage, onPrevPage, onNextPag
     pagesNumbers.push(i);
   }
 
+  
+
   return (
     <div className={style.pagination}>
       <span><button className={`${style.prevNext}`} onClick={onPrevPage}>Prev</button></span>

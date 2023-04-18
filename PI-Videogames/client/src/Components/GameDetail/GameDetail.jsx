@@ -47,7 +47,11 @@ const GameDetail = () => {
             </div>
             <div>
                 <h3>&larr; Genres &rarr;</h3>
-                <p>{game?.genres.join(' | ')}</p>
+                <p>{
+              typeof game?.genres === 'string'
+              ? game?.genres
+              :(game?.genres.map(g => g.name).join( ' | '))
+            }</p>
             </div>
 
             <div>

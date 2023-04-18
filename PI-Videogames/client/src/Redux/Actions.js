@@ -1,15 +1,15 @@
 import axios from 'axios'
 import {GET_VIDEOGAMES, CLEAN_VIDEOGAMES, GET_VIDEOGAME_ID, 
         CLEAN_VIDEOGAME_ID, GET_GENRES, API_OR_DB, 
-        ALPHABETICAL_ORDER, ORDER_BY_RATING, FILTER_BY_GENRE, FILTER_BY_NAME, ERROR } from "./Actions-Types.js";
+        ALPHABETICAL_ORDER, ORDER_BY_RATING, FILTER_BY_GENRE, FILTER_BY_NAME, VIDEOGAME_POST, ERROR } from "./Actions-Types.js";
 
 
+//Action para obtener todos los videojuegos.
 
 export const getVideogames = () => {
     return async (dispatch) => {
         try {
             const response = await axios('/videogames');
-            // console.log(response)
             dispatch({
                 type: GET_VIDEOGAMES,
                 payload: response.data
@@ -22,13 +22,18 @@ export const getVideogames = () => {
         }
     }
 }
+
+
+//Action para limpiar la informacion de videojuegos. 
+
 export const cleanVideogames = () => {
     return {
         type: CLEAN_VIDEOGAMES
     }
 }
 
-//---------------------------------//-----------//---------------------------------//
+
+//Action para obtener la informacion de un juego determinado.
 
 export const getVideogameId = (id) => {
     return async (dispatch) => {
@@ -47,6 +52,8 @@ export const getVideogameId = (id) => {
     }
 }
 
+
+//Action para limpiar la informacion de un juego determinado.
         
 export const cleanVideogameId = () => {
     return {
@@ -55,8 +62,8 @@ export const cleanVideogameId = () => {
 }
 
 
-//---------------------------------//-----------//---------------------------------//
 
+//Action para obtener todos los genres.
 
 export const getGenres = () => {
     return async (dispatch) => {
@@ -77,7 +84,7 @@ export const getGenres = () => {
 }
 
 
-//---------------------------------//-----------//---------------------------------//
+//Action para obtener los juegos de Api o DB.
 
 export const apiOrDb = (game) => {
     return {
@@ -87,7 +94,7 @@ export const apiOrDb = (game) => {
 }
 
 
-//---------------------------------//-----------//---------------------------------//
+//Action para ordenar los juegos alfabeticamente (A-Z || Z-A).
 
 export const alphabeticalOrder = (order) => {
     return {
@@ -97,8 +104,7 @@ export const alphabeticalOrder = (order) => {
 }
 
 
-//---------------------------------//-----------//---------------------------------//
-
+//Action para ordenar los videojuegos por Rating.
 
 export const orderByRating = (rating) => {
     return {
@@ -108,8 +114,7 @@ export const orderByRating = (rating) => {
 }
 
 
-//---------------------------------//-----------//---------------------------------//
-
+//Action para filtrar los videogames porun genero en especifico.
 
 export const filterByGenre = (genre) => {
     return {
@@ -119,8 +124,8 @@ export const filterByGenre = (genre) => {
   }
 
 
-//---------------------------------//-----------//---------------------------------//
 
+//Action para filtrar un juego por determinado nombre.
 
 export const filterBYName = (name) => {
     return async (dispatch) => {
@@ -137,4 +142,27 @@ export const filterBYName = (name) => {
             })
         }
     }
+}
+
+
+//Action para guardar la informacion de un nuevo videogame.
+
+export const postVideogame = (videogame) => {
+
+    return async (dispatch) => {
+
+        try {
+            let response = await axios.post('/videogames', videogame)
+            dispatch({
+                type: VIDEOGAME_POST,
+                payload: response.data
+            })
+        } catch (error) {
+            dispatch({
+                type: ERROR,
+                payload: error
+            })
+        }
+    }
+
 }

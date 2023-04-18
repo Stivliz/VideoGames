@@ -1,9 +1,14 @@
+
 .landing-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 90vh;
+    height: 100vh;
+    background-image: url('https://images5.alphacoders.com/286/thumb-1920-286249.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .landing-title {
@@ -40,5 +45,5 @@
 .landing-title,
 .landing-subtitle {
     color: #d1d1d1; /* Cambiar el color de texto según sea necesario */
-    text-shadow: 0px 0px 10px rgba(26, 255, 179, 0.8); /* Aplicar efecto de sombra de texto */
+    text-shadow: 0px 0px 10px rgba(26, 255, 179, 0.8); 
 }
