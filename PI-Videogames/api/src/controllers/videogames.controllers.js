@@ -107,7 +107,6 @@ const saveVideogameDb = async (req, res) => {
             name,
             background_image,
             description,
-            genres,
             platforms,
             released,
             rating
