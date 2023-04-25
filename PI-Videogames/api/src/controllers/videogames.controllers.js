@@ -126,7 +126,7 @@ const saveVideogameDb = async (req, res) => {
         saveDb.addGenres(findGenreDb)
         res.status(201).json(saveDb)
     } catch (error) {
-        res.status(404).json(error)
+        res.status(500).json(error)
     }
 }
 
